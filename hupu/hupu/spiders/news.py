@@ -4,6 +4,8 @@ import datetime
 
 import scrapy
 
+from hupu.items import ContentItem
+
 
 class NewsSpider(scrapy.Spider):
     name = 'news'
@@ -25,8 +27,10 @@ class NewsSpider(scrapy.Spider):
         return urls, news_time
 
     def parse_content(self, response):
-        # TODO
-        pass
+        title = response.xpath('//h1[@class="headline"]/text()').extract_first().strip()
+        content = response.xpath('//div[@class="artical-main-content"]/p/text()').extract()
+        time = response.xpath('//span[@id="pubtime_baidu"]/text()').extract_first().strip()
+        return ContentItem({'title': title, 'content': ' '.join(content), 'time': time})
 
     def parse(self, response):
         urls, news_time = self.get_title_url_time(response)
