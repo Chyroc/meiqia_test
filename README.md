@@ -7,4 +7,4 @@
 - 统计出现次数最多的100位球员
 
 ## 爬取虎扑最近30天nba新闻
-- `scrapy startproject hupu` 创建`scrapy`项目
+- `cd hupu && scrapy crawl news`
