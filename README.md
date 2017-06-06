@@ -8,3 +8,9 @@
 
 ## 爬取虎扑最近30天nba新闻
 - `cd hupu && scrapy crawl news`
+
+## 爬取球员信息
+- `cd hupu && scrapy crawl players`
+
+## 统计出现次数最多的100位球员
+- `python analyze.py && cat result.json`

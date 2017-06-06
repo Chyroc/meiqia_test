@@ -13,7 +13,7 @@ class PlayersSpider(scrapy.Spider):
         name_en = info.xpath('p/b/text()').extract()
         with open('name_word.txt', 'a', errors='ignore', encoding='utf-8') as f:
             for i in zip(name_cn, name_en):
-                f.write('{} {}'.format(*i))
+                f.write('{},{}'.format(*i))
                 f.write('\n')
 
     def parse(self, response):
