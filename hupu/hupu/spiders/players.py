@@ -11,7 +11,7 @@ class PlayersSpider(scrapy.Spider):
         info = response.xpath('//table[@class="players_table"]/tbody/tr/td[2]')
         name_cn = info.xpath('b/a/text()').extract()
         name_en = info.xpath('p/b/text()').extract()
-        with open('name_word.txt', 'a', errors='ignore') as f:
+        with open('name_word.txt', 'a', errors='ignore', encoding='utf-8') as f:
             for i in zip(name_cn, name_en):
                 f.write('{} {}'.format(*i))
                 f.write('\n')
